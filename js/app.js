@@ -13,38 +13,43 @@ const result = document.getElementById("guess-message");
 
 let count = 1;
 
-    let x = parseInt(input.value);
-function render() {
+    //let x = parseInt(input);
     
-    
-    
+let guess = input;
 
-     
-     if (count >= 3) {
-    if (x === y) {
-        document.getElementById("guess-message").textContent= "You won!"
-        currentGuess.innerText = x;
-    }
-    else if (x < y) {
-        document.getElementById("guess-message").textContent= "Try a larger number."
-        currentGuess.innerText = x;
-    }
-    else {
-        document.getElementById("guess-message").textContent= "Try a smaller number." 
-        currentGuess.innerText = x;
-    }
-    }
-    else {
-         {
-        document.getElementById("guess-message").textContent= "Sorry, you lost!"
-         comGuess.innerText = y;
-     } 
-    }
+
+
+function render() {
+ if (guess !== y) {
+    currentGuess.innerText = guess;
+  if (guess < y) {
+    document.getElementById("guess-message").textContent= "Try a larger number."
+        currentGuess.innerText = guess;
+        guessHistory.innerText = count;
+  } else if (guess > y) {
+    document.getElementById("guess-message").textContent= "Try a smaller number." 
+    currentGuess.innerText = guess;
     guessHistory.innerText = count;
+  }
+  guess = input;
+}
+    if (guess == y) {
+        document.getElementById("guess-message").textContent= "You won!";
+        currentGuess.innerText = guess;
+        guessHistory.innerText = count;
+            
+    }
+    
+    if (count > 3) {
+        document.getElementById("guess-message").textContent= "Sorry, you lost!"
+      comGuess.innerText = y;
+      guessHistory.innerText = count;
+    }
+
 }
 
-
 submitbtn.addEventListener("click", function () {
-   render();
-  count++;
+    render();
+    count++;
+    guess =  Number(document.getElementById("guess-input").value)
 });
