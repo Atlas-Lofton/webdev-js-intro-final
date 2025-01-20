@@ -32,6 +32,8 @@ function render() {
     guessHistory.innerText = count;
   }
   guess = input;
+  currentGuess.innerText = guess;
+        guessHistory.innerText = count;
 }
     if (guess == y) {
         document.getElementById("guess-message").textContent= "You won!";
@@ -52,4 +54,8 @@ submitbtn.addEventListener("click", function () {
     render();
     count++;
     guess =  Number(document.getElementById("guess-input").value)
+});
+
+restart.addEventListener("click", function()  {
+    location.reload();
 });
