@@ -20,24 +20,26 @@ let guess = input;
 
 
 function render() {
- if (guess !== y) {
-    currentGuess.innerText = guess;
-  if (guess < y) {
+ if (Number(guess) !== y) {
+    currentGuess.innerText = Number(guess.value);
+  if (Number(guess) < y) {
     document.getElementById("guess-message").textContent= "Try a larger number."
-        currentGuess.innerText = guess;
+        currentGuess.innerText = Number(guess.value);
         guessHistory.innerText = count;
-  } else if (guess > y) {
+  } 
+    else if (Number(guess) > y) {
     document.getElementById("guess-message").textContent= "Try a smaller number." 
-    currentGuess.innerText = guess;
+    currentGuess.innerText = Number(guess);
     guessHistory.innerText = count;
   }
+  
   guess = input;
-  currentGuess.innerText = guess;
-        guessHistory.innerText = count;
+  currentGuess.innerText = Number(guess.value);
+    guessHistory.innerText = count;
 }
-    if (guess == y) {
+    if (Number(guess) == y) {
         document.getElementById("guess-message").textContent= "You won!";
-        currentGuess.innerText = guess;
+        currentGuess.innerText = Number(guess.value);
         guessHistory.innerText = count;
             
     }
